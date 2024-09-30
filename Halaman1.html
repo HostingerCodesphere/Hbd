@@ -52,8 +52,8 @@
     <img src="Aulia.jpg" alt="Foto"> 
     <div class="typing-text" id="typing"></div>
 
-    <!-- Audio dengan autoplay dan loop, autoplay akan dinonaktifkan untuk kontrol manual -->
-    <audio id="background-music" loop>
+    <!-- Audio dengan autoplay dan loop -->
+    <audio id="background-music" autoplay loop muted>
         <source src="Backsound.mp3" type="audio/mpeg"> 
         Your browser does not support the audio element.
     </audio>
@@ -74,10 +74,6 @@
         let index = 0;
         const typingElement = document.getElementById('typing');
         const typingSpeed = 100; // Kecepatan mengetik
-        const music = document.getElementById('background-music');
-
-        // Set volume audio (0.0 to 1.0)
-        music.volume = 0.5; // Misalnya 50% volume
 
         function typeText() {
             if (index < texts.length) {
@@ -103,12 +99,7 @@
             }
         }
 
-        // Jeda 2 detik sebelum mulai mengetik dan memutar musik
-        setTimeout(() => {
-            music.play(); // Mulai musik setelah 2 detik
-            typeText(); // Mulai animasi mengetik
-        }, 2000);
-
+        typeText(); // Mulai animasi mengetik
     </script>
 
 </body>
