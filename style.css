@@ -649,7 +649,7 @@ body {
   height: 50vmin;
   border-top-left-radius: 100%;
   border-left: 2vmin solid #ED7A9B;
-  -webkit-mask-image: linear-gradient(to top, transparent 25%, #00FF00 50%);
+  -webkit-mask-image: linear-gradient(to top, transparent 25%, #ED7A9B 50%);
   position: relative;
   z-index: 1;
 }
