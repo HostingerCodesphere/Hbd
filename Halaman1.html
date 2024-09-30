@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column; 
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #BA7373;
+            padding: 20px; 
+            overflow: hidden; 
+        }
+
+        img {
+            max-width: 100%;
+            height: auto; 
+            margin-bottom: 50px; 
+            border-radius: 10px; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+        }
+
+        .typing-text {
+            font-size: 20px; 
+            overflow: hidden;
+            border-right: 2px solid;
+            max-width: 100%;
+            white-space: normal; /* Mengizinkan teks turun ke baris berikutnya */
+            word-break: break-word; /* Memecah kata panjang agar tetap dalam batas lebar */
+            animation: blink 0.75s step-end infinite alternate; 
+            text-align: center; 
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        @media (max-width: 600px) {
+            .typing-text {
+                font-size: 18px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src="Aulia.jpg" alt="Foto"> 
+    <div class="typing-text" id="typing"></div>
+
+    <!-- Music ( Terserah mau ganti atau ngga mah) -->
+    <audio id="background-music" autoplay loop>
+        <source src="Backsound.mp3" type="audio/mpeg"> 
+<!-- Ganti Nama music sesuai musik punya anda -->
+        Your browser does not support the audio element.
+    </audio>
+
+    <script>
+        const texts = [
+            "Ciee, yang hari ini ultah...",
+            "Udah Umur Berapa kamu? hihi",
+            "Sudah Beranjak dewasa yaa...",
+            "Walaupun kamu sudah dewasa",
+            "Tapi Dimataku kamu always Dan tetap Anak Kecil",
+            "Selamat ulang tahun Yaaa",
+            "Semoga diumur ini kamu menjadi lebih tinggi,hihi",
+            "Terimakasih sudah mengenal ku",
+            "Happy Birthday🎉"
+        ];
+
+        let index = 0;
+        let charIndex = 0;
+        const typingElement = document.getElementById('typing');
+        const typingSpeed = 100; // Kecepatan mengetik
+        const deletingSpeed = 50; // Kecepatan menghapus
+
+        function typeText() {
+            if (charIndex < texts[index].length) {
+                typingElement.textContent += texts[index].charAt(charIndex);
+                charIndex++;
+                setTimeout(typeText, typingSpeed);
+            } else {
+                setTimeout(deleteText, 1000); // Tunggu sebentar sebelum menghapus
+            }
+        }
+
+        function deleteText() {
+            if (charIndex > 0) {
+                typingElement.textContent = typingElement.textContent.slice(0, -1);
+                charIndex--;
+                setTimeout(deleteText, deletingSpeed);
+            } else {
+                index = (index + 1) % texts.length; // Pergi ke teks berikutnya
+                charIndex = 0; // Reset charIndex untuk teks baru
+                typeText(); // Mulai mengetik teks baru
+            }
+        }
+
+        typeText(); // Mulai animasi mengetik
+    </script>
+
+</body>
+</html>
